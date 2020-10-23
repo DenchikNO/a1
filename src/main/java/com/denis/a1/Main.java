@@ -1,11 +1,13 @@
 package com.denis.a1;
 
+import java.text.ParseException;
+import java.util.Date;
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         IpTransform ipTransform = new IpTransform();
         Factorial factorial = new Factorial();
-        UnauthorizedDelivery unauthorizedDelivery = new UnauthorizedDelivery();
 
         System.out.println(ipTransform.transformToInt("128.32.10.0"));
         System.out.println(ipTransform.transformToString(2149583360L));
@@ -14,8 +16,9 @@ public class Main {
 
         System.out.format("%f%n", factorial.countFormula(2));
 
+        //TODO delete
         System.out.println("");
-
-        unauthorizedDelivery.readFile();
+        TableDate tableDate = new TableDate();
+        System.out.println(tableDate.stringToDate("21.07.2020"));
     }
 }

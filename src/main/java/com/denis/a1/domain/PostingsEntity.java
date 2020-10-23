@@ -1,17 +1,17 @@
-package com.denis.a1;
+package com.denis.a1.domain;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "postings")
 public class PostingsEntity implements Serializable {
+    private static final long serialVersionUID = 4582894433055277790L;
 
     @Id
     @Column(name = "p_id")
@@ -47,6 +47,10 @@ public class PostingsEntity implements Serializable {
 
     @Column(name = "user_name")
     private String userName;
+
+    public boolean isAuthorizedShipping() {
+        return authorizedShipping;
+    }
 
     @Column(name = "authorized_shipping")
     private boolean authorizedShipping;

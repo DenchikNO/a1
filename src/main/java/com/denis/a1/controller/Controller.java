@@ -1,5 +1,7 @@
-package com.denis.a1;
+package com.denis.a1.controller;
 
+import com.denis.a1.service.DataShipping;
+import com.denis.a1.service.UnauthorizedDelivery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +13,9 @@ public class Controller {
     @Autowired
     private UnauthorizedDelivery unauthorizedDelivery;
 
+    @Autowired
+    private DataShipping dataShipping;
+
     @GetMapping(value = "/save/logins")
     public void saveLogins() {
         unauthorizedDelivery.readLoginsFile();
@@ -21,11 +26,10 @@ public class Controller {
         unauthorizedDelivery.readPostingsFile();
     }
 
-    @GetMapping(value = "/shipping/{fromDate}/{toDate}/{authorizedShipping}")
-    public void takeShipping(@PathVariable(value = "fromDate") String fromDate,
-                             @PathVariable(value = "toDate") String toDate,
+    @GetMapping(value = "/shipping/{date}/{authorizedShipping}")
+    public void takeShipping(@PathVariable(value = "date") String date,
                              @PathVariable(value = "authorizedShipping") boolean authorizedShipping) {
-
+        dataShipping.takeDataShipping(date, authorizedShipping);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.denis.a1;
+package com.denis.a1.task1and2;
 
 public class IpTransform {
 

@@ -1,4 +1,4 @@
-package com.denis.a1;
+package com.denis.a1.domain;
 
 import lombok.Getter;
 import lombok.Setter;

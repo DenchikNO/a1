@@ -1,5 +1,10 @@
-package com.denis.a1;
+package com.denis.a1.service;
 
+import com.denis.a1.CheckAuthorizedShipping;
+import com.denis.a1.domain.LoginsEntity;
+import com.denis.a1.domain.PostingsEntity;
+import com.denis.a1.repository.LoginsRepository;
+import com.denis.a1.repository.PostingsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,7 +54,6 @@ public class UnauthorizedDelivery {
 
     public void readPostingsFile() {
         List<String> postingsList = new ArrayList<>();
-        TableDate tableDate = new TableDate();
         CheckAuthorizedShipping checkAuthorizedShipping = new CheckAuthorizedShipping();
         LoginsEntity loginsEntity = new LoginsEntity();
         String line;
@@ -66,9 +70,8 @@ public class UnauthorizedDelivery {
                 PostingsEntity postingsEntity = new PostingsEntity();
                 postingsEntity.setMatDoc(Long.parseLong(postingsList.get(n)));
                 postingsEntity.setItem(Integer.parseInt(postingsList.get(++n)));
-//                postingsEntity.setDocDate(tableDate.stringToDate(postingsList.get(++n)));
-//                postingsEntity.setPstngDate(tableDate.stringToDate(postingsList.get(++n)));
-//                postingsEntity.setPstngDate(postingsList.get(++n));
+                postingsEntity.setDocDate(postingsList.get(++n));
+                postingsEntity.setPstngDate(postingsList.get(++n));
                 postingsEntity.setMaterialDescription(postingsList.get(++n));
                 postingsEntity.setQuantity(Integer.parseInt(postingsList.get(++n)));
                 postingsEntity.setBun(postingsList.get(++n));
